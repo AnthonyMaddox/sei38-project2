@@ -6,12 +6,14 @@ let player2 = {
    hand: {
    }
 }
+
+let cards = [];
+
 function card(value, name, suit){
 	this.value = value;
 	this.name = name;
 	this.suit = suit;
 }
-let cards = [];
 function deck(){
    this.suits = ['Hearts','Diamonds','Spades','Clubs'];
 	this.names = [ '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
