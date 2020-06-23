@@ -7,7 +7,10 @@ let player2 = {
    }
 }
 
-let cards = [];
+
+
+function resetGame() {
+   let cards = [];
 
 function card(value, name, suit){
 	this.value = value;
@@ -30,17 +33,32 @@ deck()
 function shuffle(deckArray) {
    let newPosition ;
    let tempVar ;
-   for (let i = deckArray.length-1; i > 0; i--) {
-      newPosition = Math.floor(Math.random() * (i + 1))
-      tempVar = deckArray[i]
+   for (let i = deckArray.length - 1; i > 0; i--) {
+      newPosition = Math.floor(Math.random() * (i + 1));
+      tempVar = deckArray[i];
       deckArray[newPosition] = tempVar;
    }
    return deckArray;
 }
-function resetGame() {
-   shuffle(cards)
-   console.log(cards);
+   newDeck = shuffle(cards);
+   console.log(newDeck); 
 }
+function dealHands () {
+   for (let i = 0; i < newDeck.length; i++) {
+      for (let j = 0; j < 2; j++) {
+         
+      }
+   }
+}
+
 
 resetGame()
 resetGame()
+resetGame()
+resetGame()
+resetGame()
+
+/* function resetGame() {
+   let newDeck = shuffle(cards);
+   console.log(newDeck);
+   */
