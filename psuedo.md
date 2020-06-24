@@ -20,7 +20,7 @@ playRound
 
    isWar
 
-   // if war, each player puts one another card from their deck into the pot facedown and then plays another round
+   // if war, each player puts another card from their deck into the pot facedown and then plays another round
 
    // if new card values again equal each other, it's war. Else highest value card wins
 
