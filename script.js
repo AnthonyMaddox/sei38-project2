@@ -7,7 +7,6 @@ let player2 = {
 
 let newDeck = [];
 let pot = [];
-let player1Card ;
 let cards = [];
 
 //reset function 
@@ -21,7 +20,6 @@ function resetGame() {
    }
    newDeck = [];
    pot = [];
-   player1Card ;
    cards = [];
 function card(value, name, suit){
 	this.value = value;
@@ -84,12 +82,14 @@ function playRound (){
    pot.push(player1Card, player2Card);
    console.log(pot);
    if (player1Card.value > player2Card.value) {
-      player1.hand.push(pot.shift(pot[0]), pot.shift(pot[1]))
-      console.log("player 1 Wins!")
+      player1.hand.push(pot.shift(pot[0]), pot.shift(pot[1]));
+      console.log("player 1 Wins!");
+      console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
    else if (player1Card.value < player2Card.value) {
       player2.hand.push(pot.shift(pot[0]), pot.shift(pot[1]))
-      console.log("player 2 Wins!")
+      console.log("player 2 Wins!");
+      console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
    else {
       isWar()
@@ -105,15 +105,17 @@ function isWar() {
       console.log(pot);
       console.log(player1NewCard);
       console.log(player2NewCard);
-      if (this.player1NewCard.value > this.player2NewCard.value) {
-         player1.hand.push(pot.shift(pot.slice(0, (pot.length-1))));
+      if (player1NewCard.value > player2NewCard.value) {
+         player1.hand.push(pot.shift(...pot));
          pot = []
          console.log("player 1 wins War!");
+         console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
       }
-      else if (this.player1NewCard.value < this.player2NewCard.value) {
-         player2.hand.push(pot.shift(pot.slice(0, (pot.length-1))));
+      else if (player1NewCard.value < player2NewCard.value) {
+         player2.hand.push(pot.pop(...pot));
          pot = []
          console.log("player 2 wins War!");
+         console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
          
       }
       else {
@@ -123,6 +125,7 @@ function isWar() {
 
 document.getElementById("resetButton").addEventListener("click", resetGame)
 document.getElementById("playButton").addEventListener("click", playRound)
+
 
 /* if (player1.hand.length > 0 && player2.hand.length > 0){
    console.log("click on 'play round'")
