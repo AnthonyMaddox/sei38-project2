@@ -38,7 +38,6 @@ function deck(){
    return cards;
 }
 deck()
-
 function shuffle(deckArray) {
    let newPosition ;
    let tempVar ;
@@ -49,10 +48,8 @@ function shuffle(deckArray) {
    }
    return deckArray;
 }
-
 newDeck = shuffle(cards);
 console.log(newDeck);
-
 function dealHands() {
    let newCard ;
    for (let i = newDeck.length; i > 0; i--) {
@@ -74,7 +71,7 @@ console.log(player2.hand);
 //end of reset function
 
 
-function playRound (){
+function playRound() {
    player1Card = player1.hand.shift();
    player2Card = player2.hand.shift();
    console.log(player1Card);
@@ -87,7 +84,7 @@ function playRound (){
       console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
    else if (player1Card.value < player2Card.value) {
-      player2.hand.push(pot.shift(pot[0]), pot.shift(pot[1]))
+      player2.hand.push(pot.shift(pot[0]), pot.shift(pot[1]));
       console.log("player 2 Wins!");
       console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
@@ -96,32 +93,32 @@ function playRound (){
    }
 }
 function isWar() {
-      console.log("It's WAR!!!!!!!!!!!!!!!!!!")
-      player1Card = player1.hand.shift(player1.hand);
-      player1NewCard = player1.hand.shift(player1.hand);
-      player2Card = player2.hand.shift(player1.hand);
-      player2NewCard = player2.hand.shift(player1.hand);
-      pot.push(player1Card, player1NewCard, player2Card, player2NewCard);
-      console.log(pot);
-      console.log(player1NewCard);
-      console.log(player2NewCard);
-      if (player1NewCard.value > player2NewCard.value) {
-         player1.hand.push(pot.shift(...pot));
-         pot = []
-         console.log("player 1 wins War!");
-         console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
-      }
-      else if (player1NewCard.value < player2NewCard.value) {
-         player2.hand.push(pot.pop(...pot));
-         pot = []
-         console.log("player 2 wins War!");
-         console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
-         
-      }
-      else {
-         isWar()
-      }
+   console.log("It's WAR!!!!!!!!!!!!!!!!!!")
+   player1Card = player1.hand.shift(player1.hand);
+   player1NewCard = player1.hand.shift(player1.hand);
+   player2Card = player2.hand.shift(player1.hand);
+   player2NewCard = player2.hand.shift(player1.hand);
+   pot.push(player1Card, player1NewCard, player2Card, player2NewCard);
+   console.log(pot);
+   console.log(player1NewCard);
+   console.log(player2NewCard);
+   if (player1NewCard.value > player2NewCard.value) {
+      player1.hand.push(pot.slice(0, pot[pot.length]-1));
+      pot = []
+      console.log("player 1 wins War!");
+      console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
+   else if (player1NewCard.value < player2NewCard.value) {
+      player2.hand.push(pot.slice(0, pot[pot.length]-1));
+      pot = []
+      console.log("player 2 wins War!");
+      console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);   
+   }
+   else {
+      isWar()
+   }
+}
+
 
 document.getElementById("resetButton").addEventListener("click", resetGame)
 document.getElementById("playButton").addEventListener("click", playRound)
