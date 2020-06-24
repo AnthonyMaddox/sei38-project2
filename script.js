@@ -103,14 +103,14 @@ function isWar() {
    console.log(player1NewCard);
    console.log(player2NewCard);
    if (player1NewCard.value > player2NewCard.value) {
-      player1.hand.push(pot.slice(0, pot[pot.length]-1));
-      pot = []
+      player1.hand.push(pot.shift(pot[0]), pot.shift(pot[1]), pot.shift(pot[2]), pot.shift(pot[3]), pot.shift(pot[4]), pot.shift(pot[5]));
+      //pot = []
       console.log("player 1 wins War!");
       console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
    else if (player1NewCard.value < player2NewCard.value) {
-      player2.hand.push(pot.slice(0, pot[pot.length]-1));
-      pot = []
+      player2.hand.push(pot.shift(pot[0]), pot.shift(pot[1]), pot.shift(pot[2]), pot.shift(pot[3]), pot.shift(pot[4]), pot.shift(pot[5]));
+      //pot = []
       console.log("player 2 wins War!");
       console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);   
    }
@@ -118,7 +118,6 @@ function isWar() {
       isWar()
    }
 }
-
 
 document.getElementById("resetButton").addEventListener("click", resetGame)
 document.getElementById("playButton").addEventListener("click", playRound)
