@@ -12,9 +12,9 @@ playRound
    compareCards, playerWinsRound
    // winner with the highest value card takes all cards in the pot and they are returned face down at the bottom of their deck
    // if both card values ==, than it's war
-   // if war, each player puts one another card from their deck into the pot facedown and then plays another round
 
    isWar
+   // if war, each player puts one another card from their deck into the pot facedown and then plays another round
    // if new card values again equal each other, it's war. Else highest value card wins
    //  once a player cannot play anymore cards during a round, that player loses and the other player wins the game
 

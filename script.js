@@ -5,7 +5,7 @@ let player2 = {
    hand: []
 }
 
-
+newDeck = [];
 
 function resetGame() {
    let cards = [];
@@ -43,7 +43,7 @@ function shuffle(deckArray) {
 newDeck = shuffle(cards);
 console.log(newDeck);
 
-function dealHands () {
+function dealHands() {
    let newCard ;
    for (let i = newDeck.length; i > 0; i--) {
       if (i % 2 == 0) {
@@ -54,14 +54,15 @@ function dealHands () {
          newCard = newDeck.pop();
          player2.hand.push(newCard);
       } 
-   }  
+   } 
 }
-dealHands()
+dealHands();
 }
+
 
 if (player1.hand.length == 0 || player2.hand.length == 0) {
    resetGame()
 }
-
 console.log(player1.hand);
 console.log(player2.hand);
+
