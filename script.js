@@ -23,14 +23,12 @@ function resetGame() {
    newDeck = [];
    pot = [];
    cards = [];
-   class card {
-      constructor(value, name, suit) {
+function card(value, name, suit) {
          this.value = value;
          this.name = name;
          this.suit = suit;
-      }
    }
-function deck(){
+function deck() {
    this.suits = ['Hearts','Diamonds','Spades','Clubs'];
 	this.names = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
 
@@ -44,11 +42,11 @@ function deck(){
 deck()
 function shuffle(deckArray) {
    let newPosition ;
-   let tempVar ;
+   let tempPos ;
    for (let i = deckArray.length - 1; i > 0; i--) {
       newPosition = Math.floor(Math.random() * (i + 1));
-      tempVar = deckArray[i];
-      deckArray[newPosition] = tempVar;
+      tempPos = deckArray[i];
+      deckArray[newPosition] = tempPos;
    }
    return deckArray;
 }
@@ -70,13 +68,15 @@ function dealHands() {
 dealHands();
 console.log(player1.hand);
 console.log(player2.hand);
-console.log("please click on 'play round'");
+console.log("please click on 'Play Round' or 'Play Entire Game");
 }
 
 //end of reset function
 
 
 function playRound() {
+   console.log(player1.hand);
+   console.log(player2.hand);
    player1Card = player1.hand.shift();
    player2Card = player2.hand.shift();
    console.log("You play " + player1Card.name + " of " + player1Card.suit);
@@ -84,21 +84,23 @@ function playRound() {
    pot.push(player1Card, player2Card);
    console.log(pot);
    if (player1Card.value > player2Card.value) {
-      player1.hand.push(pot.shift(pot[0]), pot.shift(pot[1]));
+      player1.hand.push(...pot.splice(0, pot.length));
       console.log("You Win!");
       console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
    else if (player1Card.value < player2Card.value) {
-      player2.hand.push(pot.shift(pot[0]), pot.shift(pot[1]));
+      player2.hand.push(...pot.splice(0, pot.length));
       console.log("Computer Wins!");
       console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
    else {
-      isWar()
+      isWar();
    }
 }
 function isWar() {
    console.log("It's WAR!!!!!!!!!!!!!!!!!!");
+   console.log(player1.hand);
+   console.log(player2.hand);
    newPot = pot.concat(newPot);
    pot = [];
    player1NextCard = player1.hand.shift();
@@ -108,9 +110,9 @@ function isWar() {
    newPot.push(player1NextCard, player1NewCard, player2NextCard, player2NewCard);
    console.log(newPot);
    console.log(player1NewCard.name + " of " + player1NewCard.suit);
-   console.log(player2NewCard.name + " of " + player2NewCard.suit)
+   console.log(player2NewCard.name + " of " + player2NewCard.suit);
    if (player1NewCard.value > player2NewCard.value) {
-      player1.hand.push(...newPot.splice(0, newPot.length))
+      player1.hand.push(...newPot.splice(0, newPot.length));
       console.log("You won the War!");
       console.log(`you have ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
    }
@@ -124,25 +126,24 @@ function isWar() {
    }
 }
 function playGame(){
-   do {
-      playRound()
-   } while (player2.hand.length > 0 && player1.hand.length > 0)
    if (player2.hand.length == 0 && player1.hand.length > 0) {
-      console.log("game over, You Win!!!")
-      console.log("please reset the game by clicking on the 'reset game' button")
+      console.log("game over, You Win!!!");
+      console.log("please reset the game by clicking on the 'reset game' button");
    }
       else if (player1.hand.length == 0 && player2.hand.length > 0) { 
-      console.log("game over, Computer Wins '😞'")
-      console.log("please reset the game by clicking on the 'reset game' button")
+      console.log("game over, Computer Wins 😞");
+      console.log("please reset the game by clicking on the 'reset game' button");
    }
       else {
-      console.log()
-   }
-   } 
+      do {
+      playRound();
+         } while (player2.hand.length > 0 && player1.hand.length > 0)        
+} 
+}
 
-document.getElementById("resetButton").addEventListener("click", resetGame)
-document.getElementById("playButton").addEventListener("click", playRound)
-document.getElementById("playGameButton").addEventListener("click", playGame)
+document.getElementById("resetButton").addEventListener("click", resetGame);
+document.getElementById("playButton").addEventListener("click", playRound);
+document.getElementById("playGameButton").addEventListener("click", playGame);
 
 /*if (player2.hand.length == 0 && player1.hand.length > 0) {
    console.log("game over, You Win!!!")
