@@ -4,12 +4,19 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
    <h1>The Card Game War!</h1>
    <button  id ="resetButton">Reset Game</button>
    <button id="playButton">Play Round</button>
    <button id="playGameButton">Play Entire Game</button>
+   <p>Please open up the developer tools console by typing: option + command + i. Type in your name below and click the submit button. Then, either click on the 'play round' or 'play entire game' button. Enjoy!</p>
+   <br>
+   <br>
+   <label>Type your name:</label>
+   <input type = "text" id = "txtName"/>
+   <input type = "button" value = "Submit" onclick = "addName()"/>
    <script src="script.js"></script>
 </body>
 </html>
