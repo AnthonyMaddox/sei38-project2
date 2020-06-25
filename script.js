@@ -1,6 +1,6 @@
 let player1 = {
    hand: [],
-   name: "You"
+   name: "Player"
 }
 let player2 = {
    hand: []
