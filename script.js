@@ -45,12 +45,14 @@ function deck() {
    return cards;
 }
 deck()
+//Fisher Yates Shuffle found@ https://www.frankmitchell.org/2015/01/fisher-yates/
 function shuffle(deckArray) {
    let newPosition ;
    let tempPos ;
-   for (let i = deckArray.length - 1; i > 0; i--) {
+   for (let i = deckArray.length - 1; i > 0; i-= 1) {
       newPosition = Math.floor(Math.random() * (i + 1));
       tempPos = deckArray[i];
+      deckArray[i] = deckArray[newPosition]
       deckArray[newPosition] = tempPos;
    }
    return deckArray;
@@ -80,7 +82,7 @@ console.log("please click on the 'Play Round' or 'Play Entire Game' button");
 
 
 function playRound() {
-   if (player2.hand.length == 0 && player1.hand.length > 0) {
+   /*if (player2.hand.length == 0 && player1.hand.length > 0) {
       console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
       console.log("please reset the game by clicking on the 'reset game' button");
    }
@@ -89,6 +91,7 @@ function playRound() {
       console.log("please reset the game by clicking on the 'reset game' button");
    }
    else {
+      */
       player1Card = player1.hand.shift();
       player2Card = player2.hand.shift();
       console.log(`${player1.name} plays ${player1Card.name} of ${player1Card.suit}`);
@@ -103,13 +106,13 @@ function playRound() {
       else if (player1Card.value < player2Card.value) {
          player2.hand.push(...pot.splice(0, pot.length));
          console.log("Computer Wins!");
-         console.log(`${player1.name} has ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
+         console.log(`${player1.name} has ${player1.hand.length} cards and Computer has ${player2.hand.length} cards!`);
       }
       else {
       isWar();
       }
    }
-}
+//}
 function isWar() {
    console.log(`${player1.name} and the Computer have gone to WAR!!!!!!!!!!!!!!!!!!`);
    newPot = pot.concat(newPot);
@@ -127,7 +130,7 @@ function isWar() {
    else {
    player2NextCard = player2.hand.shift();
    player2NewCard = player2.hand.shift();
-   if (player2.hand.length == 0 && player1.hand.length > 0) {
+   /*if (player2.hand.length == 0 && player1.hand.length > 0) {
       console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
       console.log("please reset the game by clicking on the 'reset game' button");
    }
@@ -136,6 +139,7 @@ function isWar() {
       console.log("please reset the game by clicking on the 'reset game' button");
    }
    else {
+      */
       newPot.push(player1NextCard, player1NewCard, player2NextCard, player2NewCard);
       console.log(newPot);
       console.log(`${player1.name} plays ${player1Card.name} of ${player1Card.suit}`);
@@ -155,10 +159,11 @@ function isWar() {
       }
    }
 }
-}
+//}
+/*
 function playGame() {
-    /*if (player2.hand.length == 0 && player1.hand.length > 0) {
-      console.log("game over, You Win!!!");
+    if (player2.hand.length == 0 && player1.hand.length > 0) {
+      console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
       console.log("please reset the game by clicking on the 'reset game' button");
    }
       else if (player1.hand.length == 0 && player2.hand.length > 0) { 
@@ -166,12 +171,41 @@ function playGame() {
       console.log("please reset the game by clicking on the 'reset game' button");
    }
       else {
-         */
+        
          do {
             playRound();
-         } while (player2.hand.length > 0 && player1.hand.length > 0)        
+         } while (player2.hand.length > 0 && player1.hand.length > 0)
+            if (player2.hand.length == 0 && player1.hand.length > 0) {
+               console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
+                  console.log("please reset the game by clicking on the 'reset game' button");
+            }
+            else if (player1.hand.length == 0 && player2.hand.length > 0) { 
+               console.log("game over, Computer Wins 😞");
+               console.log("please reset the game by clicking on the 'reset game' button");
+         }
+            else {
+               console.log("something went wrong?");
+            }        
    }
 //} 
+ */
+function playGame() {
+while (player2.hand.length > 0 && player1.hand.length > 0) {
+   playRound();
+}
+if (player2.hand.length == 0 && player1.hand.length > 0) {
+   console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
+      console.log("please reset the game by clicking on the 'reset game' button");
+}
+else if (player1.hand.length == 0 && player2.hand.length > 0) { 
+   console.log("game over, Computer Wins 😞");
+   console.log("please reset the game by clicking on the 'reset game' button");
+}
+else {
+   console.log("something went wrong?");
+} 
+
+}
 
 document.getElementById("resetButton").addEventListener("click", resetGame);
 document.getElementById("playButton").addEventListener("click", playRound);
