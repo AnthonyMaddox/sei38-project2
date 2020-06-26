@@ -84,29 +84,29 @@ function playRound() {
       console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
       console.log("please reset the game by clicking on the 'reset game' button");
    }
-      else if (player1.hand.length == 0 && player2.hand.length > 0) { 
+   else if (player1.hand.length == 0 && player2.hand.length > 0) { 
       console.log("game over, Computer Wins 😞");
       console.log("please reset the game by clicking on the 'reset game' button");
    }
-      else {
+   else {
       player1Card = player1.hand.shift();
       player2Card = player2.hand.shift();
       console.log(`${player1.name} plays ${player1Card.name} of ${player1Card.suit}`);
       console.log("Computer plays " + player2Card.name + " of " + player2Card.suit);
       pot.push(player1Card, player2Card);
       console.log(pot);
-         if (player1Card.value > player2Card.value) {
+      if (player1Card.value > player2Card.value) {
          player1.hand.push(...pot.splice(0, pot.length));
          console.log(`${player1.name} Wins!`);
          console.log(`${player1.name} has ${player1.hand.length} cards and Computer has ${player2.hand.length} cards!`);
       }
-         else if (player1Card.value < player2Card.value) {
+      else if (player1Card.value < player2Card.value) {
          player2.hand.push(...pot.splice(0, pot.length));
          console.log("Computer Wins!");
          console.log(`${player1.name} has ${player1.hand.length} cards and computer has ${player2.hand.length} cards!`);
       }
-         else {
-         isWar();
+      else {
+      isWar();
       }
    }
 }
@@ -167,10 +167,10 @@ function playGame() {
    }
       else {
          */
-      do {
-      playRound();
+         do {
+            playRound();
          } while (player2.hand.length > 0 && player1.hand.length > 0)        
-}
+   }
 //} 
 
 document.getElementById("resetButton").addEventListener("click", resetGame);
