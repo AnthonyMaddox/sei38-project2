@@ -11,5 +11,5 @@
 ####Recommended: 
 ######Apple computer/Google Chrome
 ##The Game of War
-######
+######The game of 'War' is 
 
