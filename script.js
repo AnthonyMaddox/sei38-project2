@@ -122,13 +122,17 @@ function playRound() {
       console.log(
         `${player1.name} has ${player1.hand.length} cards and Computer has ${player2.hand.length} cards!`
       );
-    } 
+    }
     if (player2.hand.length == 0 && player1.hand.length > 0) {
       console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
-      console.log("please reset the game by clicking on the 'reset game' button");
+      console.log(
+        "please reset the game by clicking on the 'reset game' button"
+      );
     } else if (player1.hand.length == 0 && player2.hand.length > 0) {
       console.log("game over, Computer Wins 😞");
-      console.log("please reset the game by clicking on the 'reset game' button");
+      console.log(
+        "please reset the game by clicking on the 'reset game' button"
+      );
     } else {
       isWar();
     }
