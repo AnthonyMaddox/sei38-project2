@@ -141,7 +141,7 @@ function playRound() {
 }
 function isWar() {
    console.log(
-      `${player2.name} and ${player2.name} have gone to WAR!!!!`
+      `${player1.name} and ${player2.name} have gone to WAR!!!!`
     );
   newPot = pot.concat(newPot);
   pot = [];
