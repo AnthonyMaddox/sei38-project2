@@ -4,6 +4,7 @@ let player1 = {
 };
 let player2 = {
   hand: [],
+  name: "Computer",
 };
 
 let newDeck = [];
@@ -106,7 +107,7 @@ function playRound() {
       `${player1.name} plays ${player1Card.name} of ${player1Card.suit}`
     );
     console.log(
-      "Computer plays " + player2Card.name + " of " + player2Card.suit
+      `${player2.name} plays ${player2Card.name} of ${player2Card.suit}`
     );
     pot.push(player1Card, player2Card);
     console.log(pot);
@@ -123,7 +124,7 @@ function playRound() {
         `${player1.name} has ${player1.hand.length} cards and Computer has ${player2.hand.length} cards!`
       );
     }
-    if (player2.hand.length == 0 && player1.hand.length > 0) {
+    else if (player2.hand.length == 0 && player1.hand.length > 0) {
       console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
       console.log(
         "please reset the game by clicking on the 'reset game' button"
@@ -139,9 +140,9 @@ function playRound() {
   }
 }
 function isWar() {
-  console.log(
-    `${player1.name} and the Computer have gone to WAR!!!!!!!!!!!!!!!!!!`
-  );
+   console.log(
+      `${player2.name} and ${player2.name} have gone to WAR!!!!`
+    );
   newPot = pot.concat(newPot);
   pot = [];
   if (player2.hand.length == 0 && player1.hand.length > 0) {
@@ -152,7 +153,7 @@ function isWar() {
     console.log("please reset the game by clicking on the 'reset game' button");
   } else {
     player1NextCard = player1.hand.shift();
-    player1NewCard = player1.hand.shift();
+    player2NextCard = player2.hand.shift();
     if (player2.hand.length == 0 && player1.hand.length > 0) {
       console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
       console.log(
@@ -164,7 +165,7 @@ function isWar() {
         "please reset the game by clicking on the 'reset game' button"
       );
     } else {
-      player2NextCard = player2.hand.shift();
+      player1NewCard = player1.hand.shift();
       player2NewCard = player2.hand.shift();
       if (player2.hand.length == 0 && player1.hand.length > 0) {
         console.log(`game over, ${player1.name} Wins🎉😃🎉!!!`);
@@ -185,10 +186,10 @@ function isWar() {
         );
         console.log(newPot);
         console.log(
-          `${player1.name} plays ${player1Card.name} of ${player1Card.suit}`
+          `${player1.name} plays ${player1NewCard.name} of ${player1NewCard.suit}`
         );
         console.log(
-          "Computer plays " + player2NewCard.name + " of " + player2NewCard.suit
+          `${player2.name} plays ${player2NewCard.name} of ${player2NewCard.suit}`
         );
         if (player1NewCard.value > player2NewCard.value) {
           player1.hand.push(...newPot.splice(0, newPot.length));
